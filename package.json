@@ -1,0 +1,33 @@
+{
+  "name": "jsencrypt-ext",
+  "version": "1.1.1",
+  "description": "A Javascript library to extend jsencrypt and can encrypt/decrypt long message",
+  "main": "lib/jsencrypt.js",
+  "module": "src/index.js",
+  "scripts": {
+    "build:dev": "webpack",
+    "build:prod": "webpack --config webpack.prod.js",
+    "build": "npm run build:dev && npm run build:prod"
+  },
+  "author": {
+    "name": "bartlian"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "jsencrypt": "^3.2.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bartlian/jsencrypt-ext.git"
+  },
+  "files": [
+    "lib",
+    "src"
+  ],
+  "keywords": ["jsencrypt", "long message"]
+}
