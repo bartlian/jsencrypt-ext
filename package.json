@@ -2,32 +2,51 @@
   "name": "jsencrypt-ext",
   "version": "1.1.1",
   "description": "A Javascript library to extend jsencrypt and can encrypt/decrypt long message",
-  "main": "lib/jsencrypt.js",
-  "module": "src/index.js",
+  "main": "lib/index.js",
+  "typings": "lib/types/index.d.ts",
   "scripts": {
-    "build:dev": "webpack",
-    "build:prod": "webpack --config webpack.prod.js",
-    "build": "npm run build:dev && npm run build:prod"
+    "build": "zx ./build.mjs",
+    "build:types": "tsc --project tsconfig.types.json"
   },
   "author": {
     "name": "bartlian"
   },
   "license": "MIT",
-  "dependencies": {
-    "jsencrypt": "^3.2.1"
-  },
   "devDependencies": {
-    "webpack": "^5.64.4",
-    "webpack-cli": "^4.9.1",
-    "webpack-dev-server": "^4.6.0"
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "@rollup/plugin-babel": "^6.0.3",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-json": "^6.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.2",
+    "@rollup/plugin-terser": "^0.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.57.1",
+    "conventional-changelog-cli": "^2.2.2",
+    "esbuild": "^0.17.15",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-standard-with-typescript": "^34.0.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "jsencrypt": "3.2.1",
+    "prettier": "^2.8.7",
+    "rollup": "^3.20.2",
+    "rollup-plugin-esbuild": "^5.0.0",
+    "typescript": "^5.0.3",
+    "zx": "^7.2.1"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:bartlian/jsencrypt-ext.git"
   },
   "files": [
-    "lib",
-    "src"
+    "lib"
   ],
-  "keywords": ["jsencrypt", "long message"]
+  "keywords": [
+    "jsencrypt",
+    "long message"
+  ]
 }
