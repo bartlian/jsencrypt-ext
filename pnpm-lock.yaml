@@ -19,7 +19,7 @@ specifiers:
   eslint-plugin-n: ^15.0.0
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-promise: ^6.0.0
-  jsencrypt: 3.2.1
+  jsencrypt: ^3.3.2
   prettier: ^2.8.7
   rollup: ^3.20.2
   rollup-plugin-esbuild: ^5.0.0
@@ -45,7 +45,7 @@ devDependencies:
   eslint-plugin-n: 15.7.0_eslint@8.37.0
   eslint-plugin-prettier: 4.2.1_ybb3aapb7235womryl2tm5ze2u
   eslint-plugin-promise: 6.1.1_eslint@8.37.0
-  jsencrypt: 3.2.1
+  jsencrypt: 3.3.2
   prettier: 2.8.7
   rollup: 3.20.2
   rollup-plugin-esbuild: 5.0.0_5zw4jabzuz2ebdah44cz4bpddu
@@ -3465,8 +3465,8 @@ packages:
       argparse: 2.0.1
     dev: true
 
-  /jsencrypt/3.2.1:
-    resolution: {integrity: sha512-k1sD5QV0KPn+D8uG9AdGzTQuamt82QZ3A3l6f7TRwMU6Oi2Vg0BsL+wZIQBONcraO1pc78ExMdvmBBJ8WhNYUA==}
+  /jsencrypt/3.3.2:
+    resolution: {integrity: sha512-arQR1R1ESGdAxY7ZheWr12wCaF2yF47v5qpB76TtV64H1pyGudk9Hvw8Y9tb/FiTIaaTRUyaSnm5T/Y53Ghm/A==}
     dev: true
 
   /jsesc/0.5.0:
