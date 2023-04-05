@@ -1,6 +1,6 @@
 {
   "name": "jsencrypt-ext",
-  "version": "1.1.1",
+  "version": "2.1.0",
   "description": "A Javascript library to extend jsencrypt and can encrypt/decrypt long message",
   "main": "lib/index.js",
   "typings": "lib/types/index.d.ts",
@@ -31,7 +31,7 @@
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
-    "jsencrypt": "3.2.1",
+    "jsencrypt": "^3.3.2",
     "prettier": "^2.8.7",
     "rollup": "^3.20.2",
     "rollup-plugin-esbuild": "^5.0.0",
@@ -46,7 +46,11 @@
     "lib"
   ],
   "keywords": [
+    "rsa",
     "jsencrypt",
-    "long message"
+    "long message",
+    "分段加密",
+    "分段解密",
+    "分段加解密"
   ]
 }
