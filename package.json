@@ -1,6 +1,6 @@
 {
   "name": "jsencrypt-ext",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A Javascript library to extend jsencrypt and can encrypt/decrypt long message",
   "main": "lib/index.js",
   "typings": "lib/types/index.d.ts",
@@ -12,6 +12,9 @@
     "name": "bartlian"
   },
   "license": "MIT",
+  "dependencies": {
+    "jsencrypt": "^3.3.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.21.4",
     "@babel/preset-env": "^7.21.4",
@@ -31,7 +34,6 @@
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
-    "jsencrypt": "^3.3.2",
     "prettier": "^2.8.7",
     "rollup": "^3.20.2",
     "rollup-plugin-esbuild": "^5.0.0",
