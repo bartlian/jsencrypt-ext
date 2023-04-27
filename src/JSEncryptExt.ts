@@ -3,7 +3,7 @@ import type { IJSEncryptOptions } from 'jsencrypt/lib/JSEncrypt'
 import { b64tohex, hex2b64 } from './utils/base64'
 
 export default class JSEncryptExt extends JSEncrypt {
-  constructor(options: IJSEncryptOptions) {
+  constructor(options?: IJSEncryptOptions) {
     super(options)
   }
 
