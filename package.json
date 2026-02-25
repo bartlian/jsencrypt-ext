@@ -1,8 +1,20 @@
 {
   "name": "jsencrypt-ext",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "description": "A Javascript library to extend jsencrypt and can encrypt/decrypt long message",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
+  "module": "./lib/index.mjs",
+  "types": "./lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.js"
+    }
+  },
+  "files": [
+    "lib"
+  ],
   "typings": "lib/types/index.d.ts",
   "scripts": {
     "build": "zx ./build.mjs",
@@ -13,12 +25,9 @@
   },
   "license": "MIT",
   "dependencies": {
-    "jsencrypt": "^3.3.2"
+    "jsencrypt": "^3.5.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.4",
-    "@babel/preset-env": "^7.21.4",
-    "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-json": "^6.0.0",
     "@rollup/plugin-node-resolve": "^15.0.2",
@@ -35,18 +44,15 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-promise": "^6.0.0",
     "prettier": "^2.8.7",
-    "rollup": "^3.20.2",
-    "rollup-plugin-esbuild": "^5.0.0",
-    "typescript": "^5.0.3",
-    "zx": "^7.2.1"
+    "rollup": "^4.59.0",
+    "rollup-plugin-esbuild": "^6.2.1",
+    "typescript": "^5.9.3",
+    "zx": "^8.8.5"
   },
   "repository": {
     "type": "git",
     "url": "git@github.com:bartlian/jsencrypt-ext.git"
   },
-  "files": [
-    "lib"
-  ],
   "keywords": [
     "rsa",
     "jsencrypt",
@@ -54,5 +60,8 @@
     "分段加密",
     "分段解密",
     "分段加解密"
-  ]
+  ],
+  "engines": {
+    "node": ">=20"
+  }
 }

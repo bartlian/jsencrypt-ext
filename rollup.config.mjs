@@ -2,33 +2,38 @@ import commonjs from '@rollup/plugin-commonjs'
 import resolve from '@rollup/plugin-node-resolve'
 import esbuild from 'rollup-plugin-esbuild'
 import json from '@rollup/plugin-json'
-import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 import terser from '@rollup/plugin-terser'
 
-const isPro = process.env.NODE_ENV === 'production'
-const file = isPro ? 'index.min.js' : 'index.js'
-const plugins = [
+const basePlugins = [
   commonjs(),
   resolve(),
   json(),
-  esbuild(),
-  getBabelOutputPlugin({
-    allowAllFormats: true,
-    presets: ['@babel/preset-env']
+  esbuild({
+    target: 'es2022',
+    minify: false
   })
 ]
 
-if (isPro) {
-  plugins.push(terser())
-}
-
 export default {
   input: 'src/index.ts',
-  output: {
-    file: `lib/${file}`,
-    format: 'umd',
-    name: 'JSEncrypt',
-    exports: 'named'
-  },
-  plugins
+  output: [
+    {
+      file: 'lib/index.js',
+      format: 'umd',
+      name: 'JSEncrypt',
+      exports: 'named'
+    },
+    {
+      file: 'lib/index.min.js',
+      format: 'umd',
+      name: 'JSEncrypt',
+      exports: 'named',
+      plugins: [terser()]
+    },
+    {
+      file: 'lib/index.mjs',
+      format: 'es'
+    }
+  ],
+  plugins: basePlugins
 }
