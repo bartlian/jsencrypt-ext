@@ -1,4 +1,4 @@
-const JSEncrypt = require('../lib/index').default
+import JSEncryptExt from '../dist/index.mjs'
 
 const key = `
 -----BEGIN PUBLIC KEY-----
@@ -12,7 +12,7 @@ IwIDAQAB
 -----END PUBLIC KEY-----
 `
 
-const encryptInstance = new JSEncrypt()
+const encryptInstance = new JSEncryptExt()
 encryptInstance.setPublicKey(key)
 
 const longMessage = JSON.stringify(
