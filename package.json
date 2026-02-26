@@ -1,52 +1,48 @@
 {
   "name": "jsencrypt-ext",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A Javascript library to extend jsencrypt and can encrypt/decrypt long message",
-  "main": "./lib/index.js",
-  "module": "./lib/index.mjs",
-  "types": "./lib/types/index.d.ts",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/types/index.d.ts",
-      "import": "./lib/index.mjs",
-      "require": "./lib/index.js"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   },
   "files": [
-    "lib"
+    "dist",
+    "README.md"
   ],
-  "typings": "lib/types/index.d.ts",
   "scripts": {
-    "build": "zx ./build.mjs",
-    "build:types": "tsc --project tsconfig.types.json"
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.{ts,js,json,md}\""
   },
   "author": {
     "name": "bartlian"
   },
   "license": "MIT",
-  "dependencies": {
-    "jsencrypt": "^3.5.4"
-  },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^24.0.1",
-    "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^15.0.2",
-    "@rollup/plugin-terser": "^0.4.0",
-    "@typescript-eslint/eslint-plugin": "^5.43.0",
-    "@typescript-eslint/parser": "^5.57.1",
-    "conventional-changelog-cli": "^2.2.2",
-    "esbuild": "^0.17.15",
-    "eslint": "^8.37.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-config-standard-with-typescript": "^34.0.1",
-    "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-promise": "^6.0.0",
-    "prettier": "^2.8.7",
-    "rollup": "^4.59.0",
-    "rollup-plugin-esbuild": "^6.2.1",
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "eslint": "^10.0.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.3.0",
+    "jiti": "^2.6.1",
+    "jsencrypt": "^3.5.4",
+    "prettier": "^3.8.1",
+    "tsup": "^8.5.1",
     "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1",
     "zx": "^8.8.5"
   },
   "repository": {

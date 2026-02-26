@@ -1,5 +1,4 @@
-const b64map =
-  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+const b64map = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
 const b64pad = '='
 const BI_RM = '0123456789abcdefghijklmnopqrstuvwxyz'
 
