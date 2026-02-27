@@ -1,6 +1,6 @@
 # jsencrypt-ext
 
-[English](./README.md) | [中文](./README.zh-CN.md)
+[English](./README.md) | [中文](./README_zh.md)
 
 **jsencrypt-ext** is a robust extension of the popular [jsencrypt](https://www.npmjs.com/package/jsencrypt) library. While RSA is technically not designed for long messages, many real-world business scenarios require it. This library provides a high-performance, cross-platform solution for **RSA chunked encryption and decryption**.
 

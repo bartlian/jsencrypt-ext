@@ -1,6 +1,6 @@
 # jsencrypt-ext
 
-[English](./README.md) | [中文](./README.zh-CN.md)
+[English](./README.md) | [中文](./README_zh.md)
 
 **jsencrypt-ext** 是对广受欢迎的 [jsencrypt](https://www.npmjs.com/package/jsencrypt) 库的强大扩展。虽然从技术上讲 RSA 并不是为长消息设计的，但许多现实世界中的业务场景都有此需求。该库为 **RSA 分段加密和解密**提供了一个高性能、跨平台的解决方案。
 
