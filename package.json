@@ -1,6 +1,6 @@
 {
   "name": "jsencrypt-ext",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "A robust RSA extension for jsencrypt supporting segmented encryption and decryption for long messages. 一个强大的 jsencrypt RSA 扩展，支持长文本的 RSA 分段加密与 RSA 分段解密。",
   "type": "module",
   "main": "./dist/index.cjs",
