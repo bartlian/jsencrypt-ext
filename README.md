@@ -1,5 +1,7 @@
 # jsencrypt-ext
 
+[English](./README.md) | [中文](./README.zh-CN.md)
+
 **jsencrypt-ext** is a robust extension of the popular [jsencrypt](https://www.npmjs.com/package/jsencrypt) library. While RSA is technically not designed for long messages, many real-world business scenarios require it. This library provides a high-performance, cross-platform solution for **RSA chunked encryption and decryption**.
 
 ---
@@ -8,7 +10,6 @@
 
 - **📦 Automatic Chunking**: Seamlessly encrypts and decrypts strings of any length by automatically calculating the maximum block size based on your RSA key bit length.
 - **🛡️ UTF-8 Integrity**: Optimized for multi-byte characters. It ensures that characters like Chinese, Japanese, or Emojis are never "sliced" in half at chunk boundaries.
-- **🧩 Zero-Padding Fix**: Solves the common "missing leading zero" bug in RSA hex-to-base64 conversions, ensuring decryption never fails due to bit-alignment issues.
 - **🚀 Cross-Platform**: Fully compatible with **Browsers**, **Node.js**, and **Mini-programs**.
 - **💪 TypeScript First**: Built with TypeScript for excellent IDE autocompletion and type safety.
 
@@ -40,15 +41,11 @@ const longMessage =
 
 // 1. Encryption
 const encryptor = new JSEncryptExt()
-encryptor.setPublicKey(
-  `-----BEGIN PUBLIC KEY----- ... -----END PUBLIC KEY-----`
-)
+encryptor.setPublicKey(`-----BEGIN PUBLIC KEY----- ... -----END PUBLIC KEY-----`)
 const ciphertext = encryptor.encrypt(longMessage)
 
 // 2. Decryption
 const decryptor = new JSEncryptExt()
-decryptor.setPrivateKey(
-  `-----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----`
-)
+decryptor.setPrivateKey(`-----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----`)
 const plaintext = decryptor.decrypt(ciphertext)
 ```
