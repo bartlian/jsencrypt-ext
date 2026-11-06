@@ -1,5 +1,5 @@
 import JSEncryptExt from './JSEncryptExt'
-import type { IJSEncryptOptions } from 'jsencrypt/lib/JSEncrypt'
+import type { IJSEncryptOptions } from './JSEncryptExt'
 
 export { JSEncryptExt }
 export type { IJSEncryptOptions }

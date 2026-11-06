@@ -49,3 +49,18 @@ const decryptor = new JSEncryptExt()
 decryptor.setPrivateKey(`-----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----`)
 const plaintext = decryptor.decrypt(ciphertext)
 ```
+
+## Security Note
+
+This package preserves `jsencrypt`'s RSA PKCS#1 v1.5 behavior for compatibility. Chunked RSA ciphertext is not authenticated as a whole. For new protocols, prefer hybrid encryption with RSA-OAEP for key wrapping and an authenticated cipher such as AES-GCM for the message.
+
+## Development
+
+The repository uses Node.js 22.18+, 24.11+, or 26+ and pins pnpm through `packageManager`.
+
+```bash
+pnpm install
+pnpm check
+```
+
+`pnpm check` runs formatting, TypeScript, ESLint, ESM/CommonJS builds, package/type validation, and the complete test suite.

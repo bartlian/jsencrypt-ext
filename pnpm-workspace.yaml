@@ -1,0 +1,6 @@
+engineStrict: true
+minimumReleaseAgeExclude:
+  - '@isaacs/nonrecursive-glob-match@1.1.0'
+  - minimatch@11.0.5
+overrides:
+  minimatch: 11.0.5

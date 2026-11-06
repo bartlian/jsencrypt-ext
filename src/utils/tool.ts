@@ -1,58 +1,56 @@
-export function stringToUint8(str: string): Uint8Array {
-  if (typeof TextEncoder !== 'undefined') {
-    return new TextEncoder().encode(str)
-  }
-
-  const b: number[] = []
-  for (let i = 0; i < str.length; i++) {
-    let c = str.charCodeAt(i)
-    if (c < 0x80) {
-      b.push(c)
-    } else if (c < 0x800) {
-      b.push(0xc0 | (c >> 6), 0x80 | (c & 0x3f))
-    } else if (c < 0xd800 || c >= 0xe000) {
-      b.push(0xe0 | (c >> 12), 0x80 | ((c >> 6) & 0x3f), 0x80 | (c & 0x3f))
-    } else {
-      i++
-      c = 0x10000 + (((c & 0x3ff) << 10) | (str.charCodeAt(i) & 0x3ff))
-      b.push(
-        0xf0 | (c >> 18),
-        0x80 | ((c >> 12) & 0x3f),
-        0x80 | ((c >> 6) & 0x3f),
-        0x80 | (c & 0x3f)
-      )
-    }
-  }
-  return new Uint8Array(b)
+function codeUnitByteLength(codeUnit: number): number {
+  if (codeUnit < 0x80) return 1
+  if (codeUnit < 0x800) return 2
+  return 3
 }
 
-export function uint8ToString(bytes: Uint8Array): string {
-  if (typeof TextDecoder !== 'undefined') {
-    return new TextDecoder().decode(bytes)
+function characterLengthAt(str: string, index: number): number {
+  const codeUnit = str.charCodeAt(index)
+  const nextCodeUnit = str.charCodeAt(index + 1)
+
+  const isSurrogatePair =
+    codeUnit >= 0xd800 && codeUnit <= 0xdbff && nextCodeUnit >= 0xdc00 && nextCodeUnit <= 0xdfff
+
+  return isSurrogatePair ? 2 : 1
+}
+
+/**
+ * Splits text according to the UTF-16 based UTF-8 encoding used internally by
+ * jsencrypt's PKCS#1 v1.5 padding implementation.
+ */
+export function splitTextForJSEncrypt(str: string, maxByteLength: number): string[] {
+  if (!Number.isInteger(maxByteLength) || maxByteLength <= 0) {
+    throw new RangeError('maxByteLength must be a positive integer')
   }
 
-  let out = '',
-    i = 0
-  const len = bytes.length
-  while (i < len) {
-    const c = bytes[i++]
-    if (c < 0x80) {
-      out += String.fromCharCode(c)
-    } else if (c < 0xe0) {
-      out += String.fromCharCode(((c & 0x1f) << 6) | (bytes[i++] & 0x3f))
-    } else if (c < 0xf0) {
-      out += String.fromCharCode(
-        ((c & 0x0f) << 12) | ((bytes[i++] & 0x3f) << 6) | (bytes[i++] & 0x3f)
-      )
-    } else {
-      const code =
-        (((c & 0x07) << 18) |
-          ((bytes[i++] & 0x3f) << 12) |
-          ((bytes[i++] & 0x3f) << 6) |
-          (bytes[i++] & 0x3f)) -
-        0x10000
-      out += String.fromCharCode(0xd800 + (code >> 10), 0xdc00 + (code & 0x3ff))
+  if (str.length === 0) return ['']
+
+  const chunks: string[] = []
+  let chunkStart = 0
+  let chunkByteLength = 0
+
+  for (let index = 0; index < str.length;) {
+    const characterLength = characterLengthAt(str, index)
+    let characterByteLength = 0
+
+    for (let offset = 0; offset < characterLength; offset++) {
+      characterByteLength += codeUnitByteLength(str.charCodeAt(index + offset))
     }
+
+    if (characterByteLength > maxByteLength) {
+      throw new RangeError('RSA key is too small for the input character')
+    }
+
+    if (chunkByteLength + characterByteLength > maxByteLength) {
+      chunks.push(str.slice(chunkStart, index))
+      chunkStart = index
+      chunkByteLength = 0
+    }
+
+    chunkByteLength += characterByteLength
+    index += characterLength
   }
-  return out
+
+  chunks.push(str.slice(chunkStart))
+  return chunks
 }

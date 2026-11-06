@@ -2,11 +2,11 @@ const b64map = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
 const b64pad = '='
 const BI_RM = '0123456789abcdefghijklmnopqrstuvwxyz'
 
-function int2char(n: number) {
+function int2char(n: number): string {
   return BI_RM.charAt(n)
 }
 
-export function hex2b64(str: string) {
+export function hex2b64(str: string): string {
   let i
   let c
   let ret = ''
@@ -27,7 +27,7 @@ export function hex2b64(str: string) {
   return ret
 }
 
-export function b64tohex(s: string) {
+export function b64tohex(s: string): string {
   let ret = ''
   let i
   let k = 0
@@ -63,4 +63,23 @@ export function b64tohex(s: string) {
     ret += int2char(slop << 2)
   }
   return ret
+}
+
+/**
+ * Validates canonical Base64 while allowing whitespace used by wrapped legacy
+ * ciphertexts. Returns the normalized value or false when validation fails.
+ */
+export function normalizeBase64(input: string): string | false {
+  const normalized = input.replace(/\s+/g, '')
+
+  if (
+    normalized.length === 0 ||
+    normalized.length % 4 !== 0 ||
+    !/^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$/.test(normalized)
+  ) {
+    return false
+  }
+
+  const hex = b64tohex(normalized)
+  return hex2b64(hex) === normalized ? normalized : false
 }

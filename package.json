@@ -3,52 +3,66 @@
   "version": "3.4.1",
   "description": "A robust RSA extension for jsencrypt supporting segmented encryption and decryption for long messages. 一个强大的 jsencrypt RSA 扩展，支持长文本的 RSA 分段加密与 RSA 分段解密。",
   "type": "module",
+  "sideEffects": false,
+  "packageManager": "pnpm@12.18.0",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.mts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.mts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
     }
   },
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "README_zh.md"
   ],
   "scripts": {
     "build": "tsdown",
+    "check": "pnpm format:check && pnpm typecheck && pnpm lint && pnpm test",
     "dev": "tsdown --watch",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
-    "format": "prettier --write \"src/**/*.{ts,js,json,md}\""
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint src test *.config.mjs --max-warnings 0",
+    "lint:fix": "pnpm lint --fix",
+    "test": "pnpm build && node --test test/*.test.mjs",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "pnpm check"
   },
   "author": {
     "name": "bartlian"
   },
   "license": "MIT",
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@eslint/js": "^10.0.1",
-    "@types/node": "^24",
-    "@typescript-eslint/eslint-plugin": "^8.56.1",
-    "@typescript-eslint/parser": "^8.56.1",
-    "eslint": "^10.0.2",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.14.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.5",
-    "globals": "^17.3.0",
-    "jiti": "^2.6.1",
+    "globals": "^17.14.0",
     "jsencrypt": "^3.5.4",
-    "prettier": "^3.8.1",
-    "tsdown": "0.21.0-beta.2",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.56.1",
-    "zx": "^8.8.5"
+    "prettier": "3.9.10",
+    "publint": "^0.3.25",
+    "tsdown": "^0.23.5",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:bartlian/jsencrypt-ext.git"
+    "url": "git+https://github.com/bartlian/jsencrypt-ext.git"
   },
+  "bugs": {
+    "url": "https://github.com/bartlian/jsencrypt-ext/issues"
+  },
+  "homepage": "https://github.com/bartlian/jsencrypt-ext#readme",
   "keywords": [
     "rsa",
     "jsencrypt",
@@ -62,6 +76,6 @@
     "rsa分段解密"
   ],
   "engines": {
-    "node": ">=20"
+    "node": "^22.18.0 || ^24.11.0 || >=26.0.0"
   }
 }

@@ -1,46 +1,31 @@
 import JSEncrypt from 'jsencrypt'
-import type { IJSEncryptOptions } from 'jsencrypt/lib/JSEncrypt'
-import { b64tohex, hex2b64 } from './utils/base64'
-import { stringToUint8, uint8ToString } from './utils/tool'
+import { b64tohex, hex2b64, normalizeBase64 } from './utils/base64'
+import { splitTextForJSEncrypt } from './utils/tool'
+
+export type IJSEncryptOptions = NonNullable<ConstructorParameters<typeof JSEncrypt>[0]>
+
+interface RsaKeyInternals {
+  n: {
+    bitLength(): number
+  }
+}
 
 export default class JSEncryptExt extends JSEncrypt {
   constructor(options?: IJSEncryptOptions) {
     super(options)
   }
 
-  encrypt(str: string) {
+  override encrypt(str: string): string | false {
     try {
       const key = this.getKey()
-      // @ts-ignore
-      const maxByteLength = ((key.n.bitLength() + 7) >> 3) - 11
-
-      // @ts-ignore
-      const blockHexLength = Math.ceil(key.n.bitLength() / 8) * 2
-
-      const fullBytes = stringToUint8(str)
-
-      if (fullBytes.length <= maxByteLength) {
-        let encrypted = key.encrypt(str)
-        if (!encrypted) return false
-
-        while (encrypted.length < blockHexLength) {
-          encrypted = '0' + encrypted
-        }
-        return hex2b64(encrypted)
-      }
+      const modulusBitLength = (key as unknown as RsaKeyInternals).n.bitLength()
+      const maxByteLength = Math.ceil(modulusBitLength / 8) - 11
+      const blockHexLength = Math.ceil(modulusBitLength / 8) * 2
+      const chunks = splitTextForJSEncrypt(str, maxByteLength)
 
       let cipherHexSum = ''
-      for (let offset = 0; offset < fullBytes.length; ) {
-        let end = offset + maxByteLength
-        if (end > fullBytes.length) end = fullBytes.length
-
-        while (end > offset && end < fullBytes.length && (fullBytes[end] & 0xc0) === 0x80) {
-          end--
-        }
-
-        const chunk = fullBytes.slice(offset, end)
-        const textChunk = uint8ToString(chunk)
-        let encrypted = key.encrypt(textChunk)
+      for (const chunk of chunks) {
+        let encrypted = key.encrypt(chunk)
 
         if (!encrypted) return false
 
@@ -49,37 +34,39 @@ export default class JSEncryptExt extends JSEncrypt {
         }
 
         cipherHexSum += encrypted
-        offset = end
       }
       return hex2b64(cipherHexSum)
-    } catch (error) {
+    } catch {
       return false
     }
   }
 
-  decrypt(cipherText: string) {
+  override decrypt(cipherText: string): string | false {
     try {
-      const hexText = b64tohex(cipherText)
-      const key = this.getKey()
-      // @ts-ignore
-      const maxLength = Math.ceil(key.n.bitLength() / 8) * 2
+      const normalizedCipherText = normalizeBase64(cipherText)
+      if (normalizedCipherText === false) return false
 
-      if (hexText.length <= maxLength) {
-        return key.decrypt(hexText)
-      }
+      const hexText = b64tohex(normalizedCipherText)
+      const key = this.getKey()
+      const modulusBitLength = (key as unknown as RsaKeyInternals).n.bitLength()
+      const blockHexLength = Math.ceil(modulusBitLength / 8) * 2
+      const normalizedHexText =
+        hexText.length < blockHexLength ? hexText.padStart(blockHexLength, '0') : hexText
+
+      if (normalizedHexText.length % blockHexLength !== 0) return false
 
       let plainText = ''
-      for (let i = 0; i < hexText.length; i += maxLength) {
-        const hexChunk = hexText.substring(i, i + maxLength)
+      for (let i = 0; i < normalizedHexText.length; i += blockHexLength) {
+        const hexChunk = normalizedHexText.substring(i, i + blockHexLength)
         const decrypted = key.decrypt(hexChunk)
 
-        if (!decrypted) return false
+        if (typeof decrypted !== 'string') return false
 
         plainText += decrypted
       }
 
       return plainText
-    } catch (error) {
+    } catch {
       return false
     }
   }

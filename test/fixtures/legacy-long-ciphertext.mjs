@@ -1,0 +1,34 @@
+export const legacyPrivateKey = `-----BEGIN PRIVATE KEY-----
+MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDTbZgvMBiiZMsl
+7F0buFGfzQsVU0VLgXtAvrkHVnFtvdWAIK40N6uNo0aoIBOK3CdOg+2ztD6WuZLK
+914PEfnDGM8LYjgMpTxjBY1H6HEtZXX0WRkjHIgJu62/t6QL2R1FeNRTqToZcBRh
+ArV6Kl81g0VDOeuNagakPAYJBS4zOg8opejI7gAo6aaeJPl5ZN1oLjSF4yD6njEv
+R58NWOS4PUAb8o7xsBTXvV6/kWN2FIaFPaB7gwGIUeJt2IK4tNcalFm8hgRHY1mJ
+lzTWt6px3+05+DQ6OaIkgblQ2YHAOQON+OA6fes8PbV4Ivb2s5F7/0r2MqizMoSM
+jgXMeNojAgMBAAECggEAYpRd+dqGEenHIqaDfzJAtK6o9Ud/LsZvjm+e3AH9Hzr8
++iHCt8whLAguIKPcGMmvdhdjVH+9Ew/xlrsh2wr5lnLRzq/8DEFa15y2FAoYAx+k
+kMqeQtXBxDACwjpAvdl8oXDGJz/nPAcbKWRW82AgRlYvjDnMT4JZGGh4M+p7cRxP
+BrCvp4BmXb/1Jj8CQYwpoyTkXfDm+HPAJ6NPEtF0bDqZfrg/ol4wJa5IIp23Lghb
+nmasBWW+0ItZeflVGq7ZbF7QGIw2zi0SgdMTvufkr5uUq6bzXsnGrxAv6D/0nryO
+zJU+pXd86xLN4Hn8oiFttwBqVxaOD8TR1CYHhaBWyQKBgQDttx24IJi0mqDzYMjF
+JVIJqxvKsRMi0C9lWO5qBtHahP7SENVAuFxoqenhVXOVcjyrBqUw21JRako4VUt1
+aLB108GRmPGZVrIEDuv3GZ4kgkuiNnU3ZiTZQMJ6oq98qg9L1hCA7/uF0dkVYF5b
+Gx2zrfWund0zXXxjULV181kCDwKBgQDjsNqMmANHGPm7Y7qmv19qT1f4Sd9+Eyc8
+ildf88Pk4Tmj3BElfGjFm0/Tf0NhfcTcCF/D4Wvs7eGlV84L1F6oekT1b0U8f7X+
+noESLKC4DC3Fj+BTB5hP37XFErcpWSRRX8ovZc2VY/YUtZK32vcGX/Xx+F3+efiz
+/NrEnUQqrQKBgD87m4s0GIrKKxAyaZWPlN//hRgIvFdhW4ow+tJ3V/ExuXr1gVSC
+9gndUNpg2asiRSMVVHHHlYEUrgOIJNdpbq8ZEf+B2Jp6ZkYQFhKX3OpHQok2xT1k
+TV8BC/qFNfsKXaFFowQ5UgXJyV4XUWIYt3DpUFYPphyYvJLKkEp83etfAoGANmSB
+USTfY5Sr1AA3Dq6Y9KSPt1iuc0fQD75csSdinMLRKjvgPLxDqzE3GKdGSXvqE0ZM
+2lZ3mdoaFY2sQ1cwZb8PyjISsCkyKOlknBrdKhp+tLtyM2OVFz+yBKo75zzMWEQx
+4LDJM+71Um0t543/hR5Xer6CddBdgWHeQSnwpuECgYEAj/DCiQmji/W5hL44NbH4
+x5kMWCqOFREueQ3Teo1SzK7NpEVD1aOuDoScnh7hkrEtBYBzYoZ6bJhJEQhxjtgZ
+A/CSPWN31RRFT53UrBFLFMfdw7Hoxx2WD8rxBpSG4cFy4YiV1zbT7gAlWKOy+cBZ
+dZqlm7agHrHJ3fMjvOZqtMc=
+-----END PRIVATE KEY-----`
+
+export const legacyLongCiphertext =
+  'u39T6mNfENHWT8X4D/3DSlrCGIcCqjpbFxxn8TZysFQfX/kox2mayjH48/Kb3bu100PF6dM10/Ge/jbmkT9pBWkGgoIiYLlY89dSd9a6kJC0ck/qHiExxy3xGa/RIk9PQp9AU+RL/PlrGO+hw3lj5dObB3s+GBSsrq8XfUqgjfp3qgt+H0CWod+h95n2KPAjImV2TYnBtMvoMLzV6iYweO5ENBSoJmnk2szXXQ8G5TXJXkbRQ4LKsNC0umG9jWrT97jgNxEBKWgou7xil9w+65KIcAmjPlgUGccoaGJ+f+uDsKOy0ET531zvtslYtDXFCspa9gUVOq2BURTvD4jQPrWXceOjdSDO3QKIa5ixiL5Ff/0VIVeCR2nucsaVsOQz0BR7sWUD+ik0TjXhGwWVmo0/NpmSwg0Brt/p1Py+FiDPWyCsBsfuZZgoj1vOfGCPxvsWGGjmVf/Z+JSyiw2M6E8MkSxRoFGIpDsU2QRilUymD65xX/U8H5V39gvuOd1dO3WJjPrDnFG/7Dgn5L+E6XbEMJIDBtGA9RK+DwJCgNx1ppfFubRQ2gB0rpQ0xUX4qh5u05wXwy9hlWISjYrJWfjSxA9ENqqKC0D6fvqssWe0uBtSTlc1yemfpxlkHS+VqbtK0GvPVS0Mh8Nmx8cagkiHDaxZvAXfTVjpsECjSk8='
+
+export const legacyLongPlaintext =
+  '[{"name":"0壹贰叁肆伍陆柒捌玖拾佰仟"},{"name":"1壹贰叁肆伍陆柒捌玖拾佰仟"},{"name":"2壹贰叁肆伍陆柒捌玖拾佰仟"},{"name":"3壹贰叁肆伍陆柒捌玖拾佰仟"},{"name":"4壹贰叁肆伍陆柒捌玖拾佰仟"},{"name":"5壹贰叁肆伍陆柒捌玖拾佰仟"},{"name":"6壹贰叁肆伍陆柒捌玖拾佰仟"},{"name":"7壹贰叁肆伍陆柒捌玖拾佰仟"},{"name":"8壹贰叁肆伍陆柒捌玖拾佰仟"},{"name":"9壹贰叁肆伍陆柒捌玖拾佰仟"}'

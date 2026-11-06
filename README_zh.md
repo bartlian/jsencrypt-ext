@@ -46,3 +46,18 @@ const decryptor = new JSEncryptExt()
 decryptor.setPrivateKey(`-----BEGIN PRIVATE KEY----- ... -----END PRIVATE KEY-----`)
 const plaintext = decryptor.decrypt(ciphertext)
 ```
+
+## 安全说明
+
+为了兼容现有协议，本包保留了 `jsencrypt` 的 RSA PKCS#1 v1.5 行为。分段 RSA 密文不提供整体认证和防篡改能力。设计新协议时，建议使用 RSA-OAEP 封装随机密钥，并使用 AES-GCM 等带认证的对称加密算法处理正文。
+
+## 本地开发
+
+项目支持 Node.js 22.18+、24.11+ 或 26+，并通过 `packageManager` 固定 pnpm 版本。
+
+```bash
+pnpm install
+pnpm check
+```
+
+`pnpm check` 会依次执行格式检查、TypeScript 检查、ESLint、ESM/CommonJS 构建、发布包与类型校验，以及完整测试。
