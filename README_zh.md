@@ -2,7 +2,14 @@
 
 [English](./README.md) | [中文](./README_zh.md)
 
-**jsencrypt-ext** 是对广受欢迎的 [jsencrypt](https://www.npmjs.com/package/jsencrypt) 库的强大扩展。虽然从技术上讲 RSA 并不是为长消息设计的，但许多现实世界中的业务场景都有此需求。该库为 **RSA 分段加密和解密**提供了一个高性能、跨平台的解决方案。
+[![npm version](https://img.shields.io/npm/v/jsencrypt-ext.svg)](https://www.npmjs.com/package/jsencrypt-ext)
+[![npm downloads](https://img.shields.io/npm/dm/jsencrypt-ext.svg)](https://www.npmjs.com/package/jsencrypt-ext)
+[![CI](https://github.com/bartlian/jsencrypt-ext/actions/workflows/ci.yml/badge.svg)](https://github.com/bartlian/jsencrypt-ext/actions/workflows/ci.yml)
+[![license](https://img.shields.io/npm/l/jsencrypt-ext.svg)](./LICENSE)
+
+**面向 JavaScript 和 TypeScript 的 RSA 长文本分段加密与分段解密。**
+
+**jsencrypt-ext** 扩展了广受欢迎的 [JSEncrypt](https://www.npmjs.com/package/jsencrypt) API，为长文本提供自动 RSA 分段能力。它能够在 RSA 分段边界安全处理 UTF-8、中文、日文和 Emoji，并兼容浏览器、Node.js 与小程序。
 
 ---
 
@@ -12,6 +19,15 @@
 - **🛡️ UTF-8 完整性**：针对多字节字符进行了优化。它确保在分段边界处，中文、日文或 Emoji 等字符永远不会被“截断”。
 - **🚀 跨平台**：完全兼容**浏览器**、**Node.js** 和**小程序**。
 - **💪 TypeScript 优先**：使用 TypeScript 构建，提供出色的 IDE 自动补全和类型安全支持。
+- **🔌 保持 JSEncrypt API**：沿用熟悉的公钥加密、私钥解密流程，同时支持长明文和长密文。
+- **📚 ES2015、ESM 与 CommonJS**：同时提供兼容 ES2015、带类型声明的 ESM 和 CommonJS 入口。
+
+## 适用场景
+
+- 对长 JSON、表单数据等内容进行 RSA 分段加密和解密。
+- 使用 JSEncrypt 加密包含中文、日文或 Emoji 的长文本。
+- 在浏览器、Node.js 和小程序中对接 RSA PKCS#1 v1.5 协议。
+- 解密旧版 `jsencrypt-ext` 生成的分段密文。
 
 ---
 

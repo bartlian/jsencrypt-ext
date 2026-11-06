@@ -51,7 +51,9 @@ export default class JSEncryptExt extends JSEncrypt {
       const modulusBitLength = (key as unknown as RsaKeyInternals).n.bitLength()
       const blockHexLength = Math.ceil(modulusBitLength / 8) * 2
       const normalizedHexText =
-        hexText.length < blockHexLength ? hexText.padStart(blockHexLength, '0') : hexText
+        hexText.length < blockHexLength
+          ? '0'.repeat(blockHexLength - hexText.length) + hexText
+          : hexText
 
       if (normalizedHexText.length % blockHexLength !== 0) return false
 

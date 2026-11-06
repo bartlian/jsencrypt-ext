@@ -6,7 +6,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['cjs', 'esm'],
   platform: 'neutral',
-  target: 'es2020',
+  target: 'es2015',
   dts: true,
   clean: true,
   minify: true,

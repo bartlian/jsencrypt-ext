@@ -1,7 +1,7 @@
 {
   "name": "jsencrypt-ext",
   "version": "3.4.1",
-  "description": "A robust RSA extension for jsencrypt supporting segmented encryption and decryption for long messages. 一个强大的 jsencrypt RSA 扩展，支持长文本的 RSA 分段加密与 RSA 分段解密。",
+  "description": "RSA long-message chunked encryption and decryption for JavaScript and TypeScript, built on JSEncrypt with UTF-8, Chinese, and Emoji support.",
   "type": "module",
   "sideEffects": false,
   "packageManager": "pnpm@12.18.0",
@@ -25,6 +25,10 @@
     "README.md",
     "README_zh.md"
   ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "scripts": {
     "build": "tsdown",
     "check": "pnpm format:check && pnpm typecheck && pnpm lint && pnpm test",
@@ -66,16 +70,29 @@
   "keywords": [
     "rsa",
     "jsencrypt",
+    "jsencrypt-extension",
+    "rsa-encryption",
+    "rsa-decryption",
+    "rsa-long-message",
     "long-message",
+    "long-text",
+    "chunked-encryption",
+    "chunked-decryption",
     "segmented-encryption",
     "segmented-decryption",
-    "chunked-encryption",
+    "pkcs1",
+    "utf8",
+    "unicode",
+    "emoji",
+    "typescript",
+    "browser",
+    "nodejs",
+    "miniprogram",
     "分段加密",
     "分段解密",
+    "长文本加密",
+    "rsa加密",
     "rsa分段加密",
     "rsa分段解密"
-  ],
-  "engines": {
-    "node": "^22.18.0 || ^24.11.0 || >=26.0.0"
-  }
+  ]
 }
